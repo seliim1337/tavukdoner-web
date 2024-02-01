@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --tooltip-color: rgb(35, 35, 35);
+  }
+
+  body {
+    @apply bg-[#363940] antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+      "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+      "Helvetica Neue", sans-serif;
+  }
+
+  html {
+    min-width: 360px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: rgba(30, 30, 30, 0.4);
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgba(90, 90, 90, 0.6);
+    border-radius: 5px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(80, 80, 80, 0.6);
+  }
+
+  ::-webkit-scrollbar-corner {
+    display: none;
+    background: transparent;
+  }
+
+  code {
+    @apply rounded bg-[#2f3136] py-[2px] px-1;
+
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+      monospace;
+    /* border-radius: 3px; */
+  }
+
+  a {
+    @apply text-[#00aff4] no-underline hover:underline;
+  }
+
+  div {
+    @apply leading-none;
+  }
+}
+
+@layer components {
+  .card {
+    @apply relative mx-auto flex w-[95%] min-w-[80%] flex-grow
+        flex-col rounded-l-lg rounded-r-lg bg-[#292b2f] sm:w-[90%] md:w-[80%]
+        lg:w-[80%];
+  }
+
+  .card-gradient .card {
+    @apply /*bg-[rgba(41,43,47,0.2)]*/ mx-0 w-fit min-w-full;
+    background: linear-gradient(to bottom, #d31616 120px, #292b2f);
+  }
+
+  .card:before {
+    @apply z-0 h-full w-full rounded;
+  }
+
+  .card-gradient .card:before {
+    @apply no-select absolute bg-[rgba(0,0,0,50%)] content-[""];
+  }
+
+  .card-gradient {
+    @apply w-[95%] min-w-[80%] overflow-hidden
+        rounded-lg p-1 sm:w-[90%] md:w-[80%] lg:w-[80%];
+    /* bg-gradient-to-b from-[#D31616] to-[#292b2f]; */
+    background: linear-gradient(to bottom, #d31616, #292b2f);
+  }
+
+  #status-image {
+    width: 15px;
+    height: 15px;
+    padding: 7px;
+    border-radius: 50%;
+  }
+
+  #banner {
+    @apply z-[1] overflow-hidden;
+  }
+
+  #avatar {
+    @apply absolute left-8 -top-10 h-auto w-20 rounded-full border-8 sm:left-9 sm:-top-10 sm:w-20 md:left-10 md:-top-14 md:w-28 lg:left-10 lg:-top-16 lg:w-32;
+  }
+
+  .no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .tooltip {
+    @apply pointer-events-none
+        absolute w-max
+        rounded p-2 text-base
+        text-white opacity-0 shadow-xl transition-[opacity] duration-200;
+    background-color: var(--tooltip-color);
+  }
+
+  .tooltip.tooltip-open {
+    @apply opacity-100;
+  }
+
+  .tooltip > .arrow {
+    @apply absolute h-2
+        w-2
+        rotate-45;
+    background-color: var(--tooltip-color);
+  }
+
+  .tooltip-success > .arrow {
+    @apply bg-[rgba(87,216,87,0.97)];
+  }
+
+  .tooltip-success {
+    @apply bg-[rgba(87,216,87,0.97)];
+  }
+}
+
+
+.status {
+  max-width: 34px;
+  max-height: 44px;
+  -webkit-transform: translate(50%, 50%);
+  transform: translate(50%, 50%);
+  --primary-s-top: 41%;
+  --primary-l-top: 97%;
+  --primary-h-bottom: var(--primary-h-top);
+  --primary-s-bottom: 41%;
+  --primary-l-bottom: 97%;
+  position: absolute;
+  bottom: 14.64%;
+  right: 14.64%;
+  border-radius: 50%;
+}
+
+#status-image {
+  width: 15px;
+  height: 15px;
+  padding: 7px;
+  border-radius: 50%;
+}
+
+.box-color {
+  background: linear-gradient(to bottom,
+      hsl(var(--primary-h-top), var(--primary-s-top), var(--primary-l-top)),
+      hsl(var(--primary-h-bottom), var(--primary-s-bottom), var(--primary-l-bottom)));
+}
